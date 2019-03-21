@@ -34,6 +34,15 @@ I would perform error analysis and annotation on a sample of texts where the dif
 
 ## To Run
 
+ Requirements:
+
+- install nltk
+- install numpy
+- install scipy
+- install sklearn
+- import nltk
+- nltk.download("stopwords")
+
 To run the code
 ```bash
 python main.py -data path/to/data.json
