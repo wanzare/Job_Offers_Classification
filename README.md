@@ -27,9 +27,9 @@ As input to the classifiers, I represent the preprocessed as documents as tfidf 
 I decided to approach the task as a classification task because of availability of some label data that could be used for classification. As a classification task, we are able to quickly try out different classifiers in order to get compe up with possible directions for improving the system.
 
 ## Estimate quality of the result.
-I compare predictions between all pairs of classifiers and estimate the quality of the results by taking the average. My hypotheses is that If the different classifiers have comparable agreement, then the results are more reliable than if the classifiers do not agree i.e. agreement would be close to chance / random level.
+I compare predictions between all pairs of classifiers and estimate the quality of the results by taking the average. My hypotheses is that if the different classifiers have comparable agreement, then the results are more reliable than if the classifiers do not agree i.e. the agreement would be close to chance / random level.
 
-I would perform error analysis and annotation on a sample of texts where the different classifiers tend not to agree and also where they tend to agree.
+I would perform error analysis and annotation on sample texts where the different classifiers tend not to agree and also where they tend to agree. 
 
 
 ## To Run
