@@ -1,5 +1,6 @@
 import sys
 
+
 #sys.path.append('/path/to/project/folder')
 from test_wanzare.classify import classifier as cl
 from test_wanzare.utils import inOut as io
