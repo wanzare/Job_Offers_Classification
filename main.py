@@ -163,7 +163,7 @@ def compare_listcomp(x, y):
     return [1 for i, j in zip(x, y) if i == j]
 
 
-def compare_classifiers(trains,texts,path):
+def compare_classifiers(trains,train_labels,texts,path):
     """
     Classify the test data againg several classifiers
     :param trains:training data
@@ -191,7 +191,7 @@ def compare_classifiers(trains,texts,path):
         clf_labels[names[x]]= labels
     return clf_labels
 
-def save_results(labels,use_title,thresh):
+def save_results(path,labels,test_data,use_title,thresh):
     """
     Save predictions to json file
     :param labels: predicted labels
@@ -254,60 +254,8 @@ if __name__ == '__main__':
     parser.add_argument('-thresh', type=float,default=0.8,
                         help='Threshold for using title features') # TODO: Tune threshold
 
+
     args = parser.parse_args()
-    print(args)
-    compare = args.c
-    thresh = args.thresh
-    model_path = args.model
-    if args.data is None:
-        raise ValueError("Provide path to the data file")
-    else:
-        data = io.load_file(args.data)
-    path = args.path
-    use_title = args.t
-
-    # split into training and testing
-    create_train_test(data,path)
-
-    # load train data
-    train_labels = open(path+"/train_labels.txt","r").readlines()
-    train_labels = [d.strip() for d in train_labels]
-    train = path+"/train.txt"
-    train_data = open(path + "/raw_train.txt", "r")
-    trains = [d.strip() for d in train_data.readlines()]
-
-    # load test data
-    test_data = open(path+"/raw_test.txt","r")
-    test_data = test_data.readlines()
-    t = open(path + "/test.txt", "r")
-    texts = [d.strip() for d in t.readlines()]
-
-
-    # fastext model
-
-    model = fasttext.supervised(train, model_path, epoch=200)
-    labels = model.predict_proba(texts)
-
-    # compare different classifiers
-    if compare:
-        clf_labels = compare_classifiers(trains, texts, path)
-        clf_labels["Fasttext"] =[" ".join(x[0][0].split("_")) for x in labels]
-
-
-    # estimate quality
-    #result = model.test(train)
-    #print ('P@1:', result.precision)
-    #print ('R@1:', result.recall)
-
-    avg_quality=[]
-    for x,y in itertools.combinations(clf_labels.keys(),2):
-
-        sim = sum(compare_listcomp(clf_labels.get(x), clf_labels.get(y))) / len(texts)
-        print(x, " <=> ", y," : ", sim )
-        avg_quality.append(sim)
-        #
-    print("Estimated quality : ", sum(avg_quality)/len(list(itertools.combinations(clf_labels.keys(),2))))
-
-    # save results for the fasttext classifier to json file
-    save_results(labels, use_title,thresh)
-
+    #print(args)
+    from test_wanzare import  test as t
+    t.test_model(args)
