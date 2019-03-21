@@ -63,7 +63,7 @@ with the below options:
                         help='Compare different classifer outputs')
 
     '-thresh', type=float,default=0.8,
-                        help='Threshold for using title features')
+                      help='Threshold for using title features')
 
 The model outputs several files in the path provided using -path:
  - label_pred.json : stores the results of the prediction
