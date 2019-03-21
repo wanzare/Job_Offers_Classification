@@ -32,6 +32,31 @@ I compare predictions between all pairs of classifiers and estimate the quality 
 I would perform error analysis and annotation on a sample of texts where the different classifiers tend not to agree and also where they tend to agree.
 
 
+
+
+The expected outtput does a pairwise comparison between classifiers as output below:
+Nearest Neighbors  <=>  Linear SVM  :  0.4794520547945205
+Nearest Neighbors  <=>  RBF SVM  :  0.4931506849315068
+Nearest Neighbors  <=>  Random Forest  :  0.3835616438356164
+Nearest Neighbors  <=>  Fasttext  :  0.5753424657534246
+Linear SVM  <=>  RBF SVM  :  0.9863013698630136
+Linear SVM  <=>  Random Forest  :  0.9041095890410958
+Linear SVM  <=>  Fasttext  :  0.5342465753424658
+RBF SVM  <=>  Random Forest  :  0.8904109589041096
+RBF SVM  <=>  Fasttext  :  0.547945205479452
+Random Forest  <=>  Fasttext  :  0.4383561643835616
+
+
+Similar classifier e.g. Linear SVM  <=>  RBF SVM  have higher prediction agreement as compares to classifiers with different architectures e.g. Nearest Neighbors  <=>  Random Forest  :  0.3835616438356164.
+
+From the results, we can see that Nearest Neighbors has the least agreement with other classifiers and is therefore not a good model for this task. On average RBF SVM has the highest agreement with other models, followed by Linear SVM. I would argue that an SVM based model would be a better model for this task.
+
+The final estimate for quality is printed out:
+
+Estimated quality :  0.6232876712328768
+
+The final estimate for quality is 0.623. Although this is just raw agreement,  it still indicates that the approach is significantly higher than random assignment as the models agree on average 62% of the time. 
+
 ## To Run
 
  Requirements:
@@ -42,6 +67,11 @@ I would perform error analysis and annotation on a sample of texts where the dif
 - install sklearn
 - import nltk
 - nltk.download("stopwords")
+
+ Add the path to the project to PYTHONPATH:
+
+import sys
+sys.path.append('/path/to/project')
 
 To run the code
 ```bash
