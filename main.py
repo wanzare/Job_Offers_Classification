@@ -1,5 +1,5 @@
 import sys
-
+sys.path.append('/home/lilian/Dropbox/PycharmProjects/work/')
 #sys.path.append('/path/to/project/folder')
 from test_wanzare.classify import classifier as cl
 from test_wanzare.utils import inOut as io
@@ -255,6 +255,7 @@ if __name__ == '__main__':
                         help='Threshold for using title features') # TODO: Tune threshold
 
     args = parser.parse_args()
+    print(args)
     compare = args.c
     thresh = args.thresh
     model_path = args.model
@@ -290,17 +291,22 @@ if __name__ == '__main__':
     # compare different classifiers
     if compare:
         clf_labels = compare_classifiers(trains, texts, path)
-        clf_labels["fatext"] =[" ".join(x[0][0].split("_")) for x in labels]
+        clf_labels["Fasttext"] =[" ".join(x[0][0].split("_")) for x in labels]
 
 
     # estimate quality
+    #result = model.test(train)
+    #print ('P@1:', result.precision)
+    #print ('R@1:', result.recall)
+
     avg_quality=[]
     for x,y in itertools.combinations(clf_labels.keys(),2):
-        #print(x,y)
+
         sim = sum(compare_listcomp(clf_labels.get(x), clf_labels.get(y))) / len(texts)
+        print(x, " <=> ", y," : ", sim )
         avg_quality.append(sim)
-        #print(sim)
-    print("Estimates quality : ", sum(avg_quality)/len(list(itertools.combinations(clf_labels.keys(),2))))
+        #
+    print("Estimated quality : ", sum(avg_quality)/len(list(itertools.combinations(clf_labels.keys(),2))))
 
     # save results for the fasttext classifier to json file
     save_results(labels, use_title,thresh)
