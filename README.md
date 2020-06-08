@@ -34,17 +34,17 @@ I would perform error analysis and annotation on sample texts where the differen
 
 
 
-The expected outtput does a pairwise comparison between classifiers as output below:
-Nearest Neighbors  <=>  Linear SVM  :  0.4794520547945205
-Nearest Neighbors  <=>  RBF SVM  :  0.4931506849315068
-Nearest Neighbors  <=>  Random Forest  :  0.3835616438356164
-Nearest Neighbors  <=>  Fasttext  :  0.5753424657534246
-Linear SVM  <=>  RBF SVM  :  0.9863013698630136
-Linear SVM  <=>  Random Forest  :  0.9041095890410958
-Linear SVM  <=>  Fasttext  :  0.5342465753424658
-RBF SVM  <=>  Random Forest  :  0.8904109589041096
-RBF SVM  <=>  Fasttext  :  0.547945205479452
-Random Forest  <=>  Fasttext  :  0.4383561643835616
+-The expected outtput does a pairwise comparison between classifiers as output below:
+-Nearest Neighbors  <=>  Linear SVM  :  0.4794520547945205
+-Nearest Neighbors  <=>  RBF SVM  :  0.4931506849315068
+-Nearest Neighbors  <=>  Random Forest  :  0.3835616438356164
+-Nearest Neighbors  <=>  Fasttext  :  0.5753424657534246
+-Linear SVM  <=>  RBF SVM  :  0.9863013698630136
+-Linear SVM  <=>  Random Forest  :  0.9041095890410958
+-Linear SVM  <=>  Fasttext  :  0.5342465753424658
+-RBF SVM  <=>  Random Forest  :  0.8904109589041096
+-RBF SVM  <=>  Fasttext  :  0.547945205479452
+-Random Forest  <=>  Fasttext  :  0.4383561643835616
 
 
 Similar classifier e.g. Linear SVM  <=>  RBF SVM  have higher prediction agreement as compares to classifiers with different architectures e.g. Nearest Neighbors  <=>  Random Forest  :  0.3835616438356164.
