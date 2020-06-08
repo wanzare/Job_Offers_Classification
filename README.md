@@ -1,4 +1,4 @@
-### Augment offer information
+### Augment Job offer information
 Given the list of job offers (title, description and seniority level),
 but some of the offers are missing the seniority level.
 
